@@ -49,3 +49,23 @@ uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
   "uptime_seconds": 12
 }
 ```
+
+## Logging
+
+- **What is logged**: each HTTP request and response with request ID, client IP, method, path, status code, and latency in ms.
+- **Request ID**: returned to clients via `X-Request-ID` header; also available as `request.state.request_id` in handlers.
+- **Log level**: controlled by `LOG_LEVEL` env var (`DEBUG`, `INFO`, `WARNING`, `ERROR`, `CRITICAL`). Defaults to `INFO`.
+
+### Examples
+
+```text
+2025-10-26 12:00:00,123 | INFO | ee-devops-workshop | request | start | rid=2b9f... | GET /health | client=127.0.0.1
+2025-10-26 12:00:00,125 | INFO | ee-devops-workshop | request | end | rid=2b9f... | GET /health -> 200 | client=127.0.0.1 | latency_ms=2.10
+```
+
+### Configure log level
+
+```bash
+export LOG_LEVEL=DEBUG
+uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+```
