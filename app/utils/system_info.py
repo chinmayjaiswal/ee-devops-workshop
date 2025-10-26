@@ -1,7 +1,6 @@
 import os
 import platform
 import socket
-import sys
 import time
 from typing import Any, Dict
 
