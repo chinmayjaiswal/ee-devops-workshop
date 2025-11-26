@@ -27,3 +27,18 @@ logs:
     docker logs -f health-service-app
 
 
+docker login --username <githhub-user-name> --password <your_password> ghcr.io
+
+docker login --username chinmayjaiswal --password {{ secrets.GHCR_PAT }} ghcr.io
+
+docker build . -t ghcr.io/<USERNAME>/<IMAGE_NAME>:<TAG>
+
+`docker build . -t ghcr.io/chinmayjaiswal/health-service-app:sha12345`
+
+docker push ghcr.io/<USERNAME>/<IMAGE_NAME>:<TAG>
+
+`docker push ghcr.io/chinmayjaiswal/health-service-app:sha12345`
+
+
+
+
